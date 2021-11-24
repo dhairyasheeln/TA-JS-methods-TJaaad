@@ -1,125 +1,208 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
-function countAllPeople() {
-  let count=0;
- for(let house of got.houses)
- {
-   for(let people of house.people)
-   {
-    count++;
-   }
- }
- return count;
+// function countAllPeople() {
+//   let count=0;
+//  for(let house of got.houses)
+//  {
+//    for(let people of house.people)
+//    {
+//     count++;
+//    }
+//  }
+//  return count;
+// }
+
+function countAllPeople()
+{
+  let peopleLength=0;
+  got.houses.forEach(house => {
+    peopleLength+=house.people.length;
+  });
+  return peopleLength;
 }
 
 
-function peopleByHouses() {
-  let pepHouse={};
-  for(let house of got.houses)
-  {
-    let count=0;
-    for(let people of house.people)
-    {
-      count++;
-    }
-    pepHouse[house.name]=count;
-  }
-  return pepHouse;
+// function peopleByHouses() {
+//   let pepHouse={};
+//   for(let house of got.houses)
+//   {
+//     let count=0;
+//     for(let people of house.people)
+//     {
+//       count++;
+//     }
+//     pepHouse[house.name]=count;
+//   }
+//   return pepHouse;
   
+// }
+
+function peopleByHouses()
+{
+  let pepHouse={};
+  got.houses.forEach(function (house){
+    pepHouse[house.name]=house.people.length;
+  });
+  return pepHouse;
 }
 
-function everyone() {
-  let peopleName=[];
-  for(let house of got.houses)
-  {
-    for(let people of house.people)
-    {
-      peopleName.push(people.name);
-    }
-  }
-  return peopleName;
+
+// function everyone() {
+//   let peopleName=[];
+//   for(let house of got.houses)
+//   {
+//     for(let people of house.people)
+//     {
+//       peopleName.push(people.name);
+//     }
+//   }
+//   return peopleName;
+// }
+function everyone()
+{
+  let final=[];
+  got.houses.forEach(function (house){
+    let peopleName=house.people.map(person=>person.name);
+    final=final.concat(peopleName);
+  });
+  return final;
 }
 
-function nameWithS() {
-  let peopleNameWithS=[];
-  for(let house of got.houses)
-  {
-    for(let people of house.people)
-    {
-      if(people.name.toLocaleLowerCase().includes('s'))
-      {
-        peopleNameWithS.push(people.name);
-      }
-    }
-  }
-  return peopleNameWithS;
+// function nameWithS() {
+//   let peopleNameWithS=[];
+//   for(let house of got.houses)
+//   {
+//     for(let people of house.people)
+//     {
+//       if(people.name.toLocaleLowerCase().includes('s'))
+//       {
+//         peopleNameWithS.push(people.name);
+//       }
+//     }
+//   }
+//   return peopleNameWithS;
+// }
+
+function nameWithS()
+{
+  let allPeople=everyone();
+  let peopleWithS=allPeople.filter((person)=>person.toLowerCase().includes('s'));
+  return peopleWithS;
 }
 
-function nameWithA() {
-  let peopleWithA=[];
-  for(let house of got.houses)
-  {
-    for(let people of house.people)
-    {
-      if(people.name.toLocaleLowerCase().includes('a'))
-      {
-        peopleWithA.push(people.name);
-      }
-    }
-  }
+
+// function nameWithA() {
+//   let peopleWithA=[];
+//   for(let house of got.houses)
+//   {
+//     for(let people of house.people)
+//     {
+//       if(people.name.toLocaleLowerCase().includes('a'))
+//       {
+//         peopleWithA.push(people.name);
+//       }
+//     }
+//   }
+//   return peopleWithA;
+// }
+
+
+function nameWithA()
+{
+  let allPeople=everyone();
+  let peopleWithA=allPeople.filter((person)=>person.toLowerCase().includes('a'));
   return peopleWithA;
 }
 
-function surnameWithS() {
-  let temp=[];
-  let peopleSurnameWithS=[];
-  for(let house of got.houses)
-  {
-    for(let people of house.people)
-    {
-      temp=people.name.split(' ');
-      if(temp[1].startsWith('S'))
-      {
-        peopleSurnameWithS.push(people.name);
-      }
-      temp=[];
-    }
-  }
-  return peopleSurnameWithS;
+
+// function surnameWithS() {
+//   let temp=[];
+//   let peopleSurnameWithS=[];
+//   for(let house of got.houses)
+//   {
+//     for(let people of house.people)
+//     {
+//       temp=people.name.split(' ');
+//       if(temp[1].startsWith('S'))
+//       {
+//         peopleSurnameWithS.push(people.name);
+//       }
+//       temp=[];
+//     }
+//   }
+//   return peopleSurnameWithS;
+// }
+
+function surnameWithS()
+{
+  let allPeople=everyone();
+  let SS= allPeople.filter((name)=>
+  name.split(" ")[1].toLowerCase().startsWith('s')
+  );
+  return SS;
+ 
 }
 
-function surnameWithA() {
-  let temp=[];
-  let peopleSurnameWithA=[];
-  for(let house of got.houses)
-  {
-    for(let people of house.people)
-    {
-      temp=people.name.split(' ');
-      if(temp[1].startsWith('A'))
-      {
-        peopleSurnameWithA.push(people.name);
-      }
-      temp=[];
-    }
-  }
-  return peopleSurnameWithA;
+
+// function surnameWithA() {
+//   let temp=[];
+//   let peopleSurnameWithA=[];
+//   for(let house of got.houses)
+//   {
+//     for(let people of house.people)
+//     {
+//       temp=people.name.split(' ');
+//       if(temp[1].startsWith('A'))
+//       {
+//         peopleSurnameWithA.push(people.name);
+//       }
+//       temp=[];
+//     }
+//   }
+//   return peopleSurnameWithA;
+// }
+
+
+
+function surnameWithA()
+{
+  let allPeople=everyone();
+  return allPeople.filter((name)=>
+  name.split(" ")[1].toLowerCase().startsWith('a')
+  );
+ 
 }
 
-function peopleNameOfAllHouses() {
-  let housePeople={};
-  let peopName=[];
-  for(let house of got.houses)
-  {
-    for(let people of house.people)
-    {
-      peopName.push(people.name);
-      housePeople[house.name]=peopName;
-    }
-    peopName=[];
-  }
-  return housePeople;
+
+// function peopleNameOfAllHouses() {
+//   let housePeople={};
+//   let peopName=[];
+//   for(let house of got.houses)
+//   {
+//     for(let people of house.people)
+//     {
+//       peopName.push(people.name);
+//       housePeople[house.name]=peopName;
+//     }
+//     peopName=[];
+//   }
+//   return housePeople;
+// }
+
+
+function peopleNameOfAllHouses()
+{
+  let pepName=[];
+  let obj={};
+  got.houses.forEach(function (house){
+  pepName=pepName.concat(house.people.map((person)=>person.name));
+  obj[house.name]=pepName;
+  pepName=[];
+  });
+
+  return obj;
 }
+
 
 // Testing your result after writing your function
 console.log(countAllPeople());
