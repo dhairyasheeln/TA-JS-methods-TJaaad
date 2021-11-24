@@ -1,35 +1,124 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
 function countAllPeople() {
-  // your code goes here
+  let count=0;
+ for(let house of got.houses)
+ {
+   for(let people of house.people)
+   {
+    count++;
+   }
+ }
+ return count;
 }
 
+
 function peopleByHouses() {
-  // your code goes here
+  let pepHouse={};
+  for(let house of got.houses)
+  {
+    let count=0;
+    for(let people of house.people)
+    {
+      count++;
+    }
+    pepHouse[house.name]=count;
+  }
+  return pepHouse;
+  
 }
 
 function everyone() {
-  // your code goes here
+  let peopleName=[];
+  for(let house of got.houses)
+  {
+    for(let people of house.people)
+    {
+      peopleName.push(people.name);
+    }
+  }
+  return peopleName;
 }
 
 function nameWithS() {
-  // your code goes here
+  let peopleNameWithS=[];
+  for(let house of got.houses)
+  {
+    for(let people of house.people)
+    {
+      if(people.name.toLocaleLowerCase().includes('s'))
+      {
+        peopleNameWithS.push(people.name);
+      }
+    }
+  }
+  return peopleNameWithS;
 }
 
 function nameWithA() {
-  // your code goes here
+  let peopleWithA=[];
+  for(let house of got.houses)
+  {
+    for(let people of house.people)
+    {
+      if(people.name.toLocaleLowerCase().includes('a'))
+      {
+        peopleWithA.push(people.name);
+      }
+    }
+  }
+  return peopleWithA;
 }
 
 function surnameWithS() {
-  // your code goes here
+  let temp=[];
+  let peopleSurnameWithS=[];
+  for(let house of got.houses)
+  {
+    for(let people of house.people)
+    {
+      temp=people.name.split(' ');
+      if(temp[1].startsWith('S'))
+      {
+        peopleSurnameWithS.push(people.name);
+      }
+      temp=[];
+    }
+  }
+  return peopleSurnameWithS;
 }
 
 function surnameWithA() {
-  // your code goes here
+  let temp=[];
+  let peopleSurnameWithA=[];
+  for(let house of got.houses)
+  {
+    for(let people of house.people)
+    {
+      temp=people.name.split(' ');
+      if(temp[1].startsWith('A'))
+      {
+        peopleSurnameWithA.push(people.name);
+      }
+      temp=[];
+    }
+  }
+  return peopleSurnameWithA;
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let housePeople={};
+  let peopName=[];
+  for(let house of got.houses)
+  {
+    for(let people of house.people)
+    {
+      peopName.push(people.name);
+      housePeople[house.name]=peopName;
+    }
+    peopName=[];
+  }
+  return housePeople;
 }
 
 // Testing your result after writing your function
