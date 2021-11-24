@@ -1,11 +1,21 @@
 // NOTE: You can only use the (reduce) array method to solve this exercise:
 
 function countAllPeople() {
-  // your code goes here
+  let len=got.houses.reduce(allPep,0);
+  function allPep(acc,cv)
+  {
+    return acc+cv.people.length;
+  }
+  return len;
 }
 
 function peopleByHouses() {
-  // your code goes here
+  let peopleByHouse=got.houses.reduce(pepByHouse,{});
+  function pepByHouse(acc,cv)
+  {
+    return acc[cv.name]=cv.people.length;
+  }
+  return peopleByHouse;
 }
 
 function everyone() {
