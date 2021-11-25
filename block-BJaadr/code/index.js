@@ -10,36 +10,83 @@ function countAllPeople() {
 }
 
 function peopleByHouses() {
-  let peopleByHouse=got.houses.reduce(pepByHouse,{});
+let pepHouse= got.houses.reduce(pepByHouse,{});
   function pepByHouse(acc,cv)
   {
-    return acc[cv.name]=cv.people.length;
-  }
-  return peopleByHouse;
+    acc[cv.name]=cv.people.length;
+    return acc;
+  } 
+  return pepHouse;
 }
 
+
+
+
 function everyone() {
-  // your code goes here
+  let allPeople=got.houses.reduce(function (acc,house)
+  {
+   acc=acc.concat(house.people.map((person)=>person.name));
+   return acc;
+  },[]);
+  return allPeople;
 }
 
 function nameWithS() {
-  // your code goes here
+  let mapacc=[];
+  return got.houses.reduce(function (acc,house){
+  mapacc=(house.people.map((person)=>person.name));
+  acc=acc.concat(mapacc.filter((personName)=>personName.toLowerCase().includes('s')));
+  mapacc=[];
+  return acc;
+  },[]);
 }
 
 function nameWithA() {
-  // your code goes here
+  let temp=[];
+  let nameA=got.houses.reduce(function(acc,house){
+    temp=house.people.map(function(person){
+      return person.name;
+    });
+    acc=acc.concat(temp.filter(function(name){
+      return name.toLowerCase().includes('a');
+    }));
+    temp=[];
+    return acc;
+  },[])
+  return nameA;
 }
 
 function surnameWithS() {
-  // your code goes here
+  let temp=[];
+  return got.houses.reduce(function(acc,house){
+  temp=house.people.map((person)=>person.name);
+  acc=acc.concat(temp.filter(function(name){
+    return name.split(' ')[1].includes('S');
+  }));
+  return acc;
+  },[]);
+
 }
 
 function surnameWithA() {
-  // your code goes here
+  let temp=[];
+  return got.houses.reduce(function(acc,house){
+  temp=house.people.map((person)=>person.name);
+  acc=acc.concat(temp.filter(function(name){
+    return name.split(' ')[1].includes('A');
+  }));
+  return acc;
+  },[]);
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let temp=[];
+  return got.houses.reduce(function(acc,house){
+  temp=house.people.map((person)=>person.name);
+  acc[house.name]=temp;
+  temp=[];
+  return acc
+  },{})
 }
 
 // Testing your result after writing your function
